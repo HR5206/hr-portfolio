@@ -49,8 +49,8 @@ function PortfolioWindow({ file, status, active, layer, offset, onActivate, onMi
   );
 }
 
-const contents: Record<HRAppId, ReactNode> = {
-  about: <AboutContent />, projects: <ProjectsContent />, resume: <ResumeContent />,
+const contents: Record<Exclude<HRAppId, "about">, ReactNode> = {
+  projects: <ProjectsContent />, resume: <ResumeContent />,
   skills: <SkillsContent />, contact: <ContactContent />,
 };
 
@@ -127,7 +127,7 @@ export default function HRDesktop() {
               onActivate={() => bringToFront(file.id)}
               onMinimize={() => hideWindow(file.id, "minimized")}
               onClose={() => hideWindow(file.id, "closed")}>
-              {contents[file.id]}
+              {file.id === "about" ? <AboutContent onOpenProjects={() => openWindow("projects")} /> : contents[file.id]}
             </PortfolioWindow>
           ))}
         </div>

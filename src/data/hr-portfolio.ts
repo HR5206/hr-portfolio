@@ -4,7 +4,6 @@ export const hrProfile = {
   initials: "HR",
   signature: "hrv",
   edition: "2026",
-  footerLabel: "CAPTAIN / 02.",
   location: "Hosur, Tamil Nadu",
   email: "harishraghav256@gmail.com",
   github: "https://github.com/HR5206/",

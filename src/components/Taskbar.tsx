@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { FileGlyph } from "@/components/PortfolioContent";
 import { hrFiles } from "@/data/hr-portfolio";
 import type { HRAppId, HRFile } from "@/data/hr-portfolio";
 
@@ -12,6 +11,25 @@ type TaskbarProps = {
   onOpen: (id: HRAppId) => void;
   onToggle: (id: HRAppId) => void;
 };
+
+const taskIcons = {
+  start: <><rect x="3" y="3" width="14" height="11" rx="1" /><path d="M7 17h6M10 14v3" /><path className="icon-accent" d="m7 7 2 2-2 2m4 0h2" /></>,
+  about: <><path d="M5 2.5h7l3 3V17H5Z" /><path d="M12 2.5V6h3" /><path className="icon-accent" d="M8 10h4m-4 3h4" /></>,
+  projects: <><path d="M2.5 5h6l2 2h7v10h-15Z" /><path className="icon-accent" d="m11 10-2 4" /></>,
+  resume: <><path d="M5 2.5h7l3 3V17H5Z" /><path d="M12 2.5V6h3M8 14h4" /><path className="icon-accent" d="M10 8v4m-2-2 2 2 2-2" /></>,
+  skills: <><path d="m6 5-4 5 4 5m8-10 4 5-4 5" /><path className="icon-accent" d="m12 3-4 14" /></>,
+  contact: <><rect x="2.5" y="4.5" width="15" height="11" rx="1" /><path className="icon-accent" d="m3 5 7 6 7-6" /></>,
+  overview: <><rect x="3" y="3" width="14" height="14" rx="1" /><path d="M8 3v14" /><path className="icon-accent" d="M11 7h3m-3 3h3m-3 3h2" /></>,
+};
+
+function TaskIcon({ name }: { name: keyof typeof taskIcons }) {
+  return (
+    <svg className="task-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+      strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {taskIcons[name]}
+    </svg>
+  );
+}
 
 export default function Taskbar({ activeId, states, onOpen, onToggle }: TaskbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -52,13 +70,13 @@ export default function Taskbar({ activeId, states, onOpen, onToggle }: TaskbarP
           <button type="button" id="hr-start" ref={startButton} className="start-button"
             aria-controls="start-menu" aria-expanded={menuOpen}
             onClick={() => setMenuOpen((value) => !value)}>
-            <span className="start-mark" aria-hidden="true"><i /><i /><i /><i /></span> Start
+            <TaskIcon name="start" /> Start
           </button>
           <nav className="start-menu" id="start-menu" aria-label="Start menu" hidden={!menuOpen}>
             <div className="menu-heading"><b>HR</b> Personal computer</div>
             {hrFiles.map((file, index) => (
               <button key={file.id} type="button" ref={index === 0 ? firstItem : undefined} onClick={() => launch(file)}>
-                <FileGlyph file={file} /><span><strong>{file.label}</strong><small>{file.hint}</small></span>
+                <TaskIcon name={file.id} /><span><strong>{file.label}</strong><small>{file.hint}</small></span>
               </button>
             ))}
             <Link href="/overview/" className="menu-overview">Read as a page <span aria-hidden="true">↗</span></Link>
@@ -71,12 +89,12 @@ export default function Taskbar({ activeId, states, onOpen, onToggle }: TaskbarP
               aria-pressed={file.id === activeId}
               title={(file.id === activeId ? "Minimize " : "Show ") + file.label}
               onClick={() => onToggle(file.id)}>
-              <span className="task-indicator" aria-hidden="true" />{file.label}
+              <TaskIcon name={file.id} /><span>{file.label}</span>
             </button>
           ))}
         </div>
         <span className="task-motto">a small corner of the web</span>
-        <Link className="overview-shortcut" href="/overview/">Overview <span aria-hidden="true">↗</span></Link>
+        <Link className="overview-shortcut" href="/overview/"><TaskIcon name="overview" />Overview <span aria-hidden="true">↗</span></Link>
       </div>
     </footer>
   );

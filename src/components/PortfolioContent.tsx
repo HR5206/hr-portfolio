@@ -51,7 +51,7 @@ function TypedName() {
   );
 }
 
-export function AboutContent() {
+export function AboutContent({ onOpenProjects }: { onOpenProjects?: () => void }) {
   return (
     <div className="hr-about">
       <p className="hr-eyebrow">Hello, internet.</p>
@@ -60,7 +60,16 @@ export function AboutContent() {
         <p>I study computer science at SASTRA.<br />I’m learning to build software.</p>
         <p>This is where my projects,<br />experiments, and notes live.</p>
       </div>
-      <Signature />
+      <div className="about-signoff">
+        <Signature />
+        {onOpenProjects ? (
+          <button type="button" className="about-project-link" onClick={onOpenProjects}>
+            View projects <span aria-hidden="true">↗</span>
+          </button>
+        ) : (
+          <Link className="about-project-link" href="/overview/#projects">View projects ↗</Link>
+        )}
+      </div>
     </div>
   );
 }
