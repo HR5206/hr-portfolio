@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { hrProfile } from "@/data/hr-portfolio";
 import "./globals.css";
 
-const title = hrProfile.name + " | Personal computer";
+const title = "Harish Raghav | Software Developer & SASTRA CSE Student";
 const description =
   "Harish Raghav S studies computer science at SASTRA. Explore his software projects, experience, and résumé on a small interactive desktop.";
 
