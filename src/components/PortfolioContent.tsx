@@ -51,7 +51,10 @@ function TypedName() {
   );
 }
 
-export function AboutContent({ onOpenProjects }: { onOpenProjects?: () => void }) {
+export function AboutContent({ onOpenProjects, onOpenContact }: {
+  onOpenProjects?: () => void;
+  onOpenContact?: () => void;
+}) {
   return (
     <div className="hr-about">
       <p className="hr-eyebrow">Hello, internet.</p>
@@ -62,13 +65,25 @@ export function AboutContent({ onOpenProjects }: { onOpenProjects?: () => void }
       </div>
       <div className="about-signoff">
         <Signature />
-        {onOpenProjects ? (
-          <button type="button" className="about-project-link" onClick={onOpenProjects}>
-            View projects <span aria-hidden="true">↗</span>
-          </button>
-        ) : (
-          <Link className="about-project-link" href="/overview/#projects">View projects ↗</Link>
-        )}
+        <div className="about-actions">
+          {onOpenProjects ? (
+            <button type="button" className="about-project-link" onClick={onOpenProjects}>
+              View projects <span aria-hidden="true">↗</span>
+            </button>
+          ) : (
+            <Link className="about-project-link" href="/overview/#projects">View projects ↗</Link>
+          )}
+          {onOpenContact ? (
+            <button type="button" className="about-project-link about-contact-link"
+              aria-controls="hr-window-contact" onClick={onOpenContact}>
+              Contact <span aria-hidden="true">↗</span>
+            </button>
+          ) : (
+            <Link className="about-project-link about-contact-link" href="/overview/#contact">
+              Contact <span aria-hidden="true">↗</span>
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );

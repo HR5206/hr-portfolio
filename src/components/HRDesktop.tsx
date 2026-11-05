@@ -127,7 +127,10 @@ export default function HRDesktop() {
               onActivate={() => bringToFront(file.id)}
               onMinimize={() => hideWindow(file.id, "minimized")}
               onClose={() => hideWindow(file.id, "closed")}>
-              {file.id === "about" ? <AboutContent onOpenProjects={() => openWindow("projects")} /> : contents[file.id]}
+              {file.id === "about" ? (
+                <AboutContent onOpenProjects={() => openWindow("projects")}
+                  onOpenContact={() => openWindow("contact")} />
+              ) : contents[file.id]}
             </PortfolioWindow>
           ))}
         </div>
