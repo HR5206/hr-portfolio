@@ -5,7 +5,7 @@ import "./globals.css";
 
 const title = "Harish Raghav | Software Developer & SASTRA CSE Student";
 const description =
-  "Harish Raghav S studies computer science at SASTRA. Explore his software projects, experience, and résumé on a small interactive desktop.";
+  "I'm Harish Raghav, a Computer Science student at SASTRA University. Explore my software projects, technical experience, and resume through this interactive desktop portfolio.";
 
 export const metadata: Metadata = {
   title: { default: title, template: "%s | " + hrProfile.name },
