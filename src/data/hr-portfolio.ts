@@ -9,34 +9,40 @@ export const hrProfile = {
   github: "https://github.com/HR5206/",
   linkedin: "https://www.linkedin.com/in/harishraghav5/",
   resume: "/resume/Harish-Raghav-S-Resume.pdf",
+  // The apex domain currently redirects to www on the live Vercel site.
+  siteUrl: "https://www.harishraghav.dev",
+  introduction: "I study computer science at SASTRA and graduate in August 2028.",
+  interests: "I’m interested in backend systems and developer tools, and I’m looking for a software engineering internship.",
 };
 
 export const hrProjects = [
   {
-    id: "helpdesk", title: "Multi-Agent IT Helpdesk", category: "Agent systems",
-    stack: ["Python", "OpenEnv", "Reinforcement learning"],
-    summary: "An environment where agents route IT tickets through three support tiers.",
-    decision: "I scored each routing decision against the SLA target, resolution time, success, and escalation cost. A third-tier fix goes into a shared knowledge base so the first two tiers can reuse it when the same incident returns.",
-    context: "Meta × Scaler AI Hackathon",
-    repository: "https://github.com/HR5206/HelpdeskEnv",
-  },
-  {
     id: "fault-lab", title: "Fault Lab", category: "HTTP tooling",
     stack: ["TypeScript", "Node.js", "Express"],
-    summary: "An HTTP simulator for replaying failure scenarios from JSON.",
-    decision: "I assign each request its response step as soon as it arrives. A later request can finish while an earlier one is delayed. The live view records timings and disconnects, and 11 tests cover replay, concurrency, and resets during pending requests.",
-    context: "11 automated tests",
-    repository: null,
+    summary: "Repeatable HTTP failures for testing timeouts, retries, and recovery.",
+    decision: "Each request gets its response step on arrival, before a delay starts. A later request can finish while an earlier one is waiting. Reset begins a new run without changing responses that are already pending.",
+    context: "11 automated tests · local monitor and retry demo",
+    repository: "https://github.com/HR5206/fault-lab",
   },
   {
     id: "checkpoint", title: "Checkpoint", category: "Developer tools",
     stack: ["TypeScript", "Node.js", "SHA-256"],
-    summary: "A CLI for saving folder snapshots, comparing changes, and restoring files.",
-    decision: "I store file contents by SHA-256 hash, so a rename can reuse the same bytes. Restore verifies the hash and byte count before writing to a new directory. I tested recovery, corrupted objects, and unsafe paths in 12 end-to-end tests.",
-    context: "12 end-to-end tests",
-    repository: null,
+    summary: "Local folder snapshots, file comparisons, and verified restores into a fresh directory.",
+    decision: "File contents are stored by SHA-256 hash, so equal bytes can be reused across snapshots and filenames. Restore checks each object’s hash and size before claiming a new destination. It refuses to overwrite an existing folder.",
+    context: "12 end-to-end tests · repeatable recovery demo",
+    repository: "https://github.com/HR5206/checkpoint-cli",
   },
-];
+  {
+    id: "helpdesk", title: "Multi-Agent IT Helpdesk", category: "Agent systems",
+    stack: ["Python", "OpenEnv", "Reinforcement learning"],
+    summary: "A simulated support queue for exploring triage, escalation, and reusable fixes.",
+    decision: "A triage agent routes tickets through three support tiers. Graders score triage, resolution, response quality, step-based SLA efficiency, and knowledge-base contributions. Accepted L3 articles remain available to later episodes.",
+    context: "Meta × Scaler AI Hackathon · simulated ticket environment",
+    repository: "https://github.com/HR5206/HelpdeskEnv",
+  },
+] as const;
+
+export type ProjectId = (typeof hrProjects)[number]["id"];
 
 export const hrFiles = [
   { id: "about", label: "about.txt", symbol: ".txt", kind: "file", path: "/home/harish/about.txt", status: "Plain text / UTF-8", hint: "Introduction" },

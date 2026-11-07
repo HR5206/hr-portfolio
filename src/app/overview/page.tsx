@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ContactContent, PortfolioHeader, ProjectsContent, ResumeContent, Signature, SkillsContent } from "@/components/PortfolioContent";
 import { hrProfile } from "@/data/hr-portfolio";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = { title: "Portfolio overview" };
+export const metadata = pageMetadata("Portfolio overview", "Harish Raghav’s projects, source code, education, experience, technical skills, résumé, and contact details in one reading view.", "/overview/");
 
 export default function OverviewPage() {
   return (
@@ -14,7 +14,12 @@ export default function OverviewPage() {
         <header className="reading-intro">
           <p className="file-kicker">Personal computer / Reading view</p>
           <h1>{hrProfile.name}</h1>
-          <p>I study computer science at SASTRA. I build tools for replaying HTTP failures, recovering files, and routing support tickets.</p>
+          <p>{hrProfile.introduction} {hrProfile.interests}</p>
+          <div className="action-row">
+            <a className="action" href={hrProfile.resume} download>Download résumé <span aria-hidden="true">↓</span></a>
+            <a className="text-link" href={"mailto:" + hrProfile.email}>Email me <span aria-hidden="true">↗</span></a>
+            <a className="text-link" href={hrProfile.github}>GitHub <span aria-hidden="true">↗</span></a>
+          </div>
           <Signature />
         </header>
         <nav className="reading-nav" aria-label="Page sections">

@@ -9,19 +9,26 @@
     "dev": "next dev",
     "build": "next build",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/export.test.mjs",
+    "verify": "npm run lint && npm run typecheck && npm run build && npm test"
   },
   "dependencies": {
-    "next": "16.3.4",
+    "next": "16.4.5",
     "react": "19.2.6",
     "react-dom": "19.2.6"
   },
   "devDependencies": {
-    "typescript": "5.9.3",
     "@types/node": "22.19.19",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "eslint": "9.39.4",
-    "eslint-config-next": "16.3.4"
+    "eslint-config-next": "16.4.5",
+    "typescript": "5.9.3"
+  },
+  "overrides": {
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "11.0.1"
+    }
   }
 }

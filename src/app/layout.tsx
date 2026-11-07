@@ -1,23 +1,20 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { hrProfile } from "@/data/hr-portfolio";
+import { siteDescription, siteTitle } from "@/lib/metadata";
 import "./globals.css";
 
-const title = "Harish Raghav | Software Developer & SASTRA CSE Student";
-const description =
-  "I'm Harish Raghav, a Computer Science student at SASTRA University. Explore my software projects, technical experience, and resume through this interactive desktop portfolio.";
-
 export const metadata: Metadata = {
-  title: { default: title, template: "%s | " + hrProfile.name },
-  description,
+  metadataBase: new URL(hrProfile.siteUrl),
+  title: { default: siteTitle, template: "%s | " + hrProfile.name },
+  description: siteDescription,
   applicationName: "HR — Personal computer",
-  openGraph: {
-    title,
-    description,
-    siteName: "HR — Personal computer",
-    type: "website",
-  },
+  authors: [{ name: hrProfile.fullName, url: hrProfile.siteUrl }],
+  creator: hrProfile.fullName,
+  referrer: "strict-origin-when-cross-origin",
 };
+
+export const viewport: Viewport = { themeColor: "#F2EEE3", viewportFit: "cover" };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

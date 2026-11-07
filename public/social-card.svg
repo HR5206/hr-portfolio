@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs><pattern id="dots" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#20354b" opacity=".18"/></pattern></defs>
+  <rect width="1200" height="630" fill="#8c9ca6"/><rect width="1200" height="630" fill="url(#dots)"/>
+  <rect width="1200" height="64" fill="#f2eee3"/><path d="M0 64H1200" stroke="#20354b" stroke-width="2"/>
+  <g fill="#20354b" font-family="DejaVu Sans Mono, monospace"><text x="38" y="42" font-size="28" font-weight="bold">HR</text><text x="100" y="39" font-size="17">Personal computer</text><text x="956" y="39" font-size="16">Portfolio / 2026</text></g>
+  <rect x="253" y="111" width="718" height="456" fill="#20354b"/>
+  <rect x="243" y="101" width="718" height="456" fill="#f2eee3" stroke="#20354b" stroke-width="2"/>
+  <rect x="243" y="101" width="718" height="42" fill="#20354b"/>
+  <text x="266" y="129" fill="#f2eee3" font-family="DejaVu Sans Mono, monospace" font-size="17">about.txt</text>
+  <text x="266" y="177" fill="#20354b" font-family="DejaVu Sans Mono, monospace" font-size="14">/home/harish/about.txt</text><path d="M244 195H960" stroke="#8c9ca6"/>
+  <g fill="#20354b" font-family="DejaVu Sans Mono, monospace"><text x="292" y="244" font-size="13" letter-spacing="1">HELLO, INTERNET.</text><text x="288" y="309" font-size="56" font-weight="bold" letter-spacing="-3">Harish</text><text x="288" y="371" font-size="56" font-weight="bold" letter-spacing="-3">Raghav</text></g>
+  <path d="M494 382H523" stroke="#a44743" stroke-width="6"/>
+  <g fill="#20354b" font-family="DejaVu Sans, sans-serif" font-size="20"><text x="292" y="424">Backend systems. Developer tools.</text><text x="292" y="456">Computer science at SASTRA · Class of 2028</text></g>
+  <path d="M244 507H960" stroke="#20354b"/><text x="266" y="537" fill="#20354b" font-family="DejaVu Sans Mono, monospace" font-size="15">harishraghav.dev</text>
+  <path d="M89 123H149V199H89Z" fill="#f2eee3" stroke="#20354b" stroke-width="2"/><text x="103" y="181" fill="#20354b" font-family="DejaVu Sans Mono, monospace" font-size="15">.txt</text>
+  <path d="M81 260H111V271H157V322H81Z" fill="#a44743" stroke="#20354b" stroke-width="2"/><path d="M126 283L116 309" stroke="#20354b" stroke-width="3"/>
+</svg>

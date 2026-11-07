@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { CSSProperties, ReactNode } from "react";
+import type { CSSProperties, MouseEvent, ReactNode } from "react";
 import { AboutContent, ContactContent, FileGlyph, PortfolioHeader, ProjectsContent, ResumeContent, SkillsContent } from "@/components/PortfolioContent";
 import Taskbar from "@/components/Taskbar";
 import type { WindowStatus } from "@/components/Taskbar";
@@ -94,6 +94,12 @@ export default function HRDesktop() {
     bringToFront(id);
   }
 
+  function openFile(event: MouseEvent<HTMLAnchorElement>, id: HRAppId) {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    openWindow(id);
+  }
+
   function hideWindow(id: HRAppId, status: "minimized" | "closed") {
     if (status === "minimized") {
       pendingFocus.current = "hr-task-" + id;
@@ -112,11 +118,12 @@ export default function HRDesktop() {
         </p>
         <nav className="hr-icons" aria-label="Desktop files">
           {desktopFiles.map((file) => (
-            <button id={"hr-icon-" + file.id} key={file.id} type="button" className="hr-icon"
+            <a id={"hr-icon-" + file.id} key={file.id} className="hr-icon"
+              href={"/overview/" + (file.id === "about" ? "" : "#" + file.id)}
               aria-controls={"hr-window-" + file.id} aria-expanded={states[file.id] === "open"}
-              data-selected={activeId === file.id} onClick={() => openWindow(file.id)}>
+              data-selected={activeId === file.id} onClick={(event) => openFile(event, file.id)}>
               <FileGlyph file={file} /><span className="hr-icon-label">{file.label}</span>
-            </button>
+            </a>
           ))}
         </nav>
         <div className="hr-window-stack">
