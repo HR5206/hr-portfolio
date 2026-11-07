@@ -61,7 +61,7 @@ test("recruiter essentials are available in the initial HTML without JavaScript"
   const home = page("/");
   const overview = page("/overview/");
   for (const html of [home, overview]) {
-    assert.match(html, /August 2028/);
+    assert.match(html, /July 2028/);
     assert.match(html, /software engineering internship/);
     assert.match(html, /href="\/resume\/Harish-Raghav-S-Resume.pdf" download=""/);
     assert.match(html, /href="mailto:harishraghav256@gmail.com"/);

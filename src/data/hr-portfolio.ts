@@ -11,7 +11,7 @@ export const hrProfile = {
   resume: "/resume/Harish-Raghav-S-Resume.pdf",
   // The apex domain currently redirects to www on the live Vercel site.
   siteUrl: "https://www.harishraghav.dev",
-  introduction: "I study computer science at SASTRA and graduate in August 2028.",
+  introduction: "I study computer science at SASTRA and graduate in July 2028.",
   interests: "I’m interested in backend systems and developer tools, and I’m looking for a software engineering internship.",
 };
 
@@ -59,7 +59,7 @@ export const education = {
   school: "Shanmugha Arts, Science, Technology and Research Academy (SASTRA)",
   degree: "B.Tech. in Computer Science Engineering",
   place: "Thanjavur, Tamil Nadu",
-  graduation: "Expected August 2028",
+  graduation: "Expected July 2028",
   cgpa: "8.41",
   coursework: "Data Structures, Algorithms, Object-Oriented Programming",
 };
